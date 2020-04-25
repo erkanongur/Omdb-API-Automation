@@ -121,11 +121,11 @@ public class Test01 {
 				.toString();
 		String movieYear = response.then()
 				.extract()
-				.path("Title")
+				.path("Year")
 				.toString();
 		String movieReleasedInfo = response.then()
 				.extract()
-				.path("Title")
+				.path("Released")
 				.toString();
 		
 		assertNotNull(movieTitle);
