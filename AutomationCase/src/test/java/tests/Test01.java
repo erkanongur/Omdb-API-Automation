@@ -16,9 +16,9 @@ import java.util.HashMap;
 
 public class Test01 {
 	//Parameters for this test
-	String searchWord = "Twilight";
-	String searchType = "movie";
-	String searchedMovie = "Twilight";
+	String searchWord = "Harry Potter";
+	String searchType = "";
+	String searchedMovie = "Harry Potter and the Sorcerer's Stone";
 	
 	BySearch_Methods bySearch = null;
 	ByIDorTitle_Methods byIdOrTitle = null;
@@ -65,8 +65,6 @@ public class Test01 {
 				.extract()
 				.path("totalResults").toString());
 		
-		System.out.println("Total Results : " + totalResults);
-		
 		//Putting Titles and IDs into a HashMap
 		//IDs as keys and Titles as values
 		movieMap = helperMethods.combineArrays(idList, nameList);
@@ -75,7 +73,6 @@ public class Test01 {
 		//Now we can use it to get all other pages.
 		
 		int pageNumber = helperMethods.calculateTotalPageNumber(totalResults);
-		System.out.println("Page Number : " + pageNumber);
 		
 		for(int i = 2; i <= pageNumber; i++) {
 			response = bySearch.searchByTitleAndTypeWithPage(searchWord, searchType, i);
@@ -95,7 +92,6 @@ public class Test01 {
 			
 			helperMethods.combineHashMaps(movieMap, tempMovieMap);
 		}
-		System.out.println("Movie Size:" + movieMap.keySet().size());
 		
 		for (String key : movieMap.keySet()) {
 			if(movieMap.get(key).equals(searchedMovie)) {
@@ -103,8 +99,6 @@ public class Test01 {
 				break;
 			}
 		}
-		
-		System.out.println(movieId);
 	}
 	//Step 2: Searching by ID with the ID obtained in step 1. 
 	@Test(priority = 2)
