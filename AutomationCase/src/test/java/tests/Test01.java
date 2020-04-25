@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class Test01 {
 	//Parameters for this test
 	String searchWord = "Harry Potter";
-	String searchType = "";
+	String searchType = "movie";
 	String searchedMovie = "Harry Potter and the Sorcerer's Stone";
 	
 	BySearch_Methods bySearch = null;
